@@ -1,8 +1,0 @@
-{%- comment -%} Header section group {%- endcomment -%}
-{
-  "type": "header",
-  "sections": {
-    "header": { "type": "header" }
-  },
-  "order": ["header"]
-}

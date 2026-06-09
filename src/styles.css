@@ -47,8 +47,8 @@
   --popover: oklch(0.19 0 0);
   --popover-foreground: oklch(0.96 0.01 80);
 
-  --primary: oklch(0.68 0.19 38);          /* ember orange #e85d3a */
-  --primary-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.62 0.22 22);          /* bold red */
+  --primary-foreground: oklch(0.96 0.01 80);
 
   --secondary: oklch(0.25 0 0);
   --secondary-foreground: oklch(0.96 0.01 80);

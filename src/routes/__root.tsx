@@ -83,6 +83,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Signs 'N More Ltd" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Signs 'N More Ltd — Lloydminster Sign Shop" },
+      { name: "twitter:title", content: "Signs 'N More Ltd — Lloydminster Sign Shop" },
+      { property: "og:description", content: "Custom signs, vehicle wraps, banners & promo products in Lloydminster, SK." },
+      { name: "twitter:description", content: "Custom signs, vehicle wraps, banners & promo products in Lloydminster, SK." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6e989998-93ae-405c-b4d3-658cb8e3e962/id-preview-29a7b543--0113ae9e-706b-4f12-893c-0f49c1537759.lovable.app-1781010485032.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6e989998-93ae-405c-b4d3-658cb8e3e962/id-preview-29a7b543--0113ae9e-706b-4f12-893c-0f49c1537759.lovable.app-1781010485032.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

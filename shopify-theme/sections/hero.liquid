@@ -1,0 +1,49 @@
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="container-x hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span> {{ section.settings.eyebrow }}</div>
+      <h1 class="hero-title">
+        {{ section.settings.heading }}
+      </h1>
+      <p class="hero-sub">{{ section.settings.subheading }}</p>
+      <div class="hero-ctas">
+        <a href="{{ section.settings.cta_link }}" class="btn-primary">{{ section.settings.cta_label }} →</a>
+        <a href="#work" class="btn-ghost">See our work</a>
+      </div>
+      <dl class="hero-stats">
+        <div><dd>15+</dd><p>Years serving</p></div>
+        <div><dd>2,400</dd><p>Projects done</p></div>
+        <div><dd>4.0★</dd><p>Google rating</p></div>
+      </dl>
+    </div>
+    <div class="hero-media">
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 1200 }}" alt="{{ section.settings.image.alt | default: 'Custom vehicle wrap' | escape }}">
+      {%- endif -%}
+      <div class="hero-caption">
+        <p class="caption-title">Latest build</p>
+        <p>Fleet wrap · matte black + ember vinyl</p>
+      </div>
+      <div class="hero-badge">
+        <p class="badge-num">24h</p>
+        <p>Rush turnaround</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Lloydminster, SK · Est. Local" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Signs that work as hard as your business." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "From rolling billboards to storefronts that pull traffic — we design, print, and install signage that gets you noticed across the prairies." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Get a free quote" },
+    { "type": "url", "id": "cta_link", "label": "CTA link", "default": "#contact" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

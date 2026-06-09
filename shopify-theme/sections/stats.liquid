@@ -1,0 +1,35 @@
+<section class="stats-bar">
+  <div class="container-x stats-grid">
+    {%- for block in section.blocks -%}
+      <div {{ block.shopify_attributes }}>
+        <p class="big">{{ block.settings.value }}</p>
+        <p class="lbl">{{ block.settings.label }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value" },
+        { "type": "text", "id": "label", "label": "Label" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Stats",
+    "blocks": [
+      { "type": "stat", "settings": { "value": "15+", "label": "Years in Lloydminster" } },
+      { "type": "stat", "settings": { "value": "2,400+", "label": "Signs delivered" } },
+      { "type": "stat", "settings": { "value": "24h", "label": "Rush turnaround" } },
+      { "type": "stat", "settings": { "value": "100%", "label": "Locally owned" } }
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+<section id="services" class="section">
+  <div class="container-x">
+    {% render 'section-head', eyebrow: 'What we make', title: section.settings.heading %}
+    <div class="services-grid">
+      {%- for block in section.blocks -%}
+        <article class="service-card" {{ block.shopify_attributes }}>
+          <div class="service-card-head">
+            <span class="num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.body }}</p>
+          {%- assign service_fallbacks = 'work-vehicle.jpg,work-storefront.jpg,work-banner.jpg,work-promo.jpg' | split: ',' -%}
+          {%- assign fallback_idx = forloop.index0 | modulo: 4 -%}
+          <div class="service-img">
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+            {%- else -%}
+              <img src="{{ service_fallbacks[fallback_idx] | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+            {%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Services",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Built in-house. Installed by us." }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "body", "label": "Body" },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{
+    "name": "Services",
+    "blocks": [
+      { "type": "service", "settings": { "title": "Vehicle Wraps & Decals", "body": "Partial wraps, full wraps, fleet branding, and cut lettering. High-performance vinyl built for prairie winters." } },
+      { "type": "service", "settings": { "title": "Storefront & Business Signs", "body": "Illuminated channel letters, dimensional signage, ACM panels, and exterior installs that earn second looks." } },
+      { "type": "service", "settings": { "title": "Banners & Event Signage", "body": "Vinyl banners, retractable displays, trade show backdrops — printed sharp, shipped fast." } },
+      { "type": "service", "settings": { "title": "Promo Products & Apparel", "body": "Branded merch, custom apparel, hats and giveaways — your logo on the things that get used every day." } }
+    ]
+  }]
+}
+{% endschema %}

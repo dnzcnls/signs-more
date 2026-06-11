@@ -1,0 +1,23 @@
+<section class="container-x py-20">
+  <h1 class="text-5xl mb-10">Your cart</h1>
+  {% if cart.item_count == 0 %}
+    <p class="text-muted">Your cart is empty. <a href="/collections/all" class="text-primary">Continue shopping →</a></p>
+  {% else %}
+    <form action="{{ routes.cart_url }}" method="post">
+      {% for item in cart.items %}
+        <div class="flex gap-4 border-b py-4">
+          <img src="{{ item.image | image_url: width: 120 }}" alt="" class="w-24 h-24 object-cover">
+          <div class="flex-1">
+            <h3>{{ item.product.title }}</h3>
+            <p class="text-muted">{{ item.price | money }}</p>
+            <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" class="w-16 border bg-surface p-1">
+          </div>
+        </div>
+      {% endfor %}
+      <div class="flex justify-between items-center mt-8">
+        <p class="font-display text-3xl">{{ cart.total_price | money }}</p>
+        <button type="submit" name="checkout" class="btn-primary">Checkout</button>
+      </div>
+    </form>
+  {% endif %}
+</section>

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "hero":     { "type": "hero" },
+    "marquee":  { "type": "marquee" },
+    "services": { "type": "services" },
+    "process":  { "type": "process" },
+    "gallery":  { "type": "gallery" },
+    "stats":    { "type": "stats" },
+    "reviews":  { "type": "reviews" },
+    "contact":  { "type": "contact" }
+  },
+  "order": ["hero","marquee","services","process","gallery","stats","reviews","contact"]
+}

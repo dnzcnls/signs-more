@@ -2,10 +2,14 @@
   <div class="container-x">
     {% render 'section-head', eyebrow: 'Recent work', title: section.settings.heading %}
     <div class="gallery-grid">
+      {%- assign gallery_fallbacks = 'hero-wrap.jpg,work-storefront.jpg,work-banner.jpg' | split: ',' -%}
       {%- for block in section.blocks -%}
+        {%- assign g_idx = forloop.index0 | modulo: 3 -%}
         <figure class="gallery-item {% if forloop.first %}span-2{% endif %}" {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank -%}
             <img src="{{ block.settings.image | image_url: width: 1400 }}" alt="{{ block.settings.caption | escape }}" loading="lazy">
+          {%- else -%}
+            <img src="{{ gallery_fallbacks[g_idx] | asset_url }}" alt="{{ block.settings.caption | escape }}" loading="lazy">
           {%- endif -%}
           <figcaption><span>{{ block.settings.caption }}</span><span class="text-primary">↗</span></figcaption>
         </figure>

@@ -10,11 +10,15 @@
           </div>
           <h3>{{ block.settings.title }}</h3>
           <p>{{ block.settings.body }}</p>
-          {%- if block.settings.image != blank -%}
-            <div class="service-img">
+          {%- assign service_fallbacks = 'work-vehicle.jpg,work-storefront.jpg,work-banner.jpg,work-promo.jpg' | split: ',' -%}
+          {%- assign fallback_idx = forloop.index0 | modulo: 4 -%}
+          <div class="service-img">
+            {%- if block.settings.image != blank -%}
               <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.title | escape }}" loading="lazy">
-            </div>
-          {%- endif -%}
+            {%- else -%}
+              <img src="{{ service_fallbacks[fallback_idx] | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+            {%- endif -%}
+          </div>
         </article>
       {%- endfor -%}
     </div>
